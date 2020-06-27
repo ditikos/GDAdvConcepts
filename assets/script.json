@@ -1,0 +1,38 @@
+{
+    "room": {
+        "name": "The Lobby",
+        "image": "",
+        "body": {
+            "objects": [
+                {
+                    "name": "wph01",
+                    "x": 100,
+                    "y": 100,
+                    "w": 50,
+                    "h": 50,
+                    "states": [
+                        {
+                            "hs_x": 50,
+                            "hs_y": 50,
+                            "image": "wall_phone.png"
+                        }
+                    ]
+                },
+                {
+                    "name": "wph02",
+                    "x": 500,
+                    "y": 300,
+                    "w": 50,
+                    "h": 50,
+                    "states": [
+                        {
+                            "hs_x": 50,
+                            "hs_y": 50,
+                            "image": "wall_phone.png"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
