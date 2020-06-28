@@ -9,8 +9,9 @@ func _ready() -> void:
 	var json = load_file(file);
 	parse_JSON(json)
 	var my_group_members = get_tree().get_nodes_in_group("LobbyObjects")
-	print(my_group_members)
-
+	for area in my_group_members:
+		print(area.name)
+#		area.connect("input_event", self, "_on_area_clicked", [area])
 
 func load_file(path):
 	var file = File.new()
@@ -27,12 +28,13 @@ func parse_JSON(content):
 #		print(data)
 #		print(data.room.body.objects)
 		var objects = data.room.body.objects
+		var count = 0
 		for object in objects:
 			var objGroup = data.room.group + "Objects"
 			var objScript = data.room.group + "Script.gd"
 			var resScript = load("res//assets/GameScripts/LobbyScript.gd")
 			var tmp = ObjectTemplate.instance()
-			tmp.get_node(".").set_script(resScript)
+			tmp.name = object.name
 			tmp.get_node("Sprite").texture = objectPNG
 			tmp.position = Vector2(object.x, object.y)
 			var shape = RectangleShape2D.new()
@@ -42,6 +44,7 @@ func parse_JSON(content):
 			for state in object.states:
 				shape.extents = Vector2(state.hs_x / 2, state.hs_y / 2)
 			tmp.add_to_group(objGroup)
+			tmp.get_node(".").set_script(resScript)
 			add_child(tmp)
 	else:
 		print("Error: ", dict.error)
