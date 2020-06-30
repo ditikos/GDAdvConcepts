@@ -32,7 +32,7 @@ func parse_JSON(content):
 		for object in objects:
 			var objGroup = data.room.group + "Objects"
 			var objScript = data.room.group + "Script.gd"
-			var resScript = load("res//assets/GameScripts/LobbyScript.gd")
+			var resScript = load("res://assets/GameScripts/"+object.name+"_script.gd")
 			var tmp = ObjectTemplate.instance()
 			tmp.name = object.name
 			tmp.get_node("Sprite").texture = objectPNG
@@ -44,9 +44,11 @@ func parse_JSON(content):
 			for state in object.states:
 				shape.extents = Vector2(state.hs_x / 2, state.hs_y / 2)
 			tmp.add_to_group(objGroup)
-			tmp.get_node(".").set_script(resScript)
+			#tmp.get_node(".").set_script(resScript)
+			tmp.get_node(".").script = resScript
 			add_child(tmp)
 	else:
 		print("Error: ", dict.error)
 		print("Error Line: ", dict.error_line)
 		print("Error String:", dict.error_string)
+
