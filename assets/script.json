@@ -2,34 +2,20 @@
    "room":{
       "group":"Lobby",
       "name":"The Lobby",
-      "image":"",
+      "image":"room001a.png",
       "body":{
          "objects":[
             {
-               "name":"wph01",
-               "x":100,
-               "y":100,
-               "w":50,
-               "h":50,
+               "name":"dinos",
+               "x":230,
+               "y":120,
+               "w":120,
+               "h":160,
                "states":[
                   {
-                     "hs_x":30,
-                     "hs_y":30,
-                     "image":"wall_phone.png"
-                  }
-               ]
-            },
-            {
-               "name":"wph02",
-               "x":500,
-               "y":300,
-               "w":50,
-               "h":50,
-               "states":[
-                  {
-                     "hs_x":50,
-                     "hs_y":50,
-                     "image":"wall_phone.png"
+                     "hs_x":120,
+                     "hs_y":160,
+                     "image":"dinos_portrait.png"
                   }
                ]
             }
