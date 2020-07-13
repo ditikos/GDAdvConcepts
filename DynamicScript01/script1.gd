@@ -1,7 +1,10 @@
 extends Node
 
 onready var MessageLabel = get_tree().get_root().find_node("MessageLabel", true, false)
-const can_press = 0b100110000
+onready var CommandButtons = get_tree().get_root().find_node("VerbContainer", true, false)
+
+const allowBtns = ["WalkToBtn", "OpenBtn", "CloseBtn"]
+
 
 func _ready():
 	connect("mouse_entered", self, "_on_Script01_mouse_entered")
@@ -10,9 +13,21 @@ func _ready():
 
 func _on_Script01_mouse_entered():
 	MessageLabel.text = "Script 01 Mouse Entered"
+	for btn in CommandButtons.get_children():
+		if btn is Button:
+			if btn.name in allowBtns:
+				print("%s is allowed" % [btn.name])
+				btn.set("custom_colors/font_color",Color(1, 1, 1))
+#				get_tree().get_root().find_node(btn.name).add_color_override("font_color", Color(1,0,0,1))
+			else:
+				print("%s is not allowed" % [btn.name])
+				btn.set("custom_colors/font_color",Color(0.75, 0.75, 0.75, 1))
+
 
 func _on_Script01_mouse_exited():
 	MessageLabel.text = "Script 01 Mouse Exited"
+	for btn in CommandButtons.get_children():
+		btn.set("custom_colors/font_color", Color(1,1,1))
 
 func enable_buttons():
 	pass

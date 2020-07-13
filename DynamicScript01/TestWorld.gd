@@ -6,7 +6,6 @@ var tmp = null
 var shape = null
 
 func _ready():
-	print(0b111111111)
 	connect_verbs()
 	prototype_add_hotspots()
 	
